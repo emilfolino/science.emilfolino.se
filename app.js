@@ -6,6 +6,8 @@ const cors = require('cors');
 
 const app = express();
 
+const validate = require("./models/validate.js");
+
 app.use(cors());
 app.options('*', cors());
 
@@ -24,6 +26,13 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 // Base route with api-documentation
 app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/docs.html')));
+
+
+
+// Validate routes
+app.post('/validate', (req, res) => validate.add(req, res));
+
+
 
 const server = app.listen(port, () => console.log('Order api listening on port ' + port));
 
