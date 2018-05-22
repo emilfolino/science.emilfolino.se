@@ -31,7 +31,7 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/docs.html')));
 
 // Validate routes
 app.post('/validate', (req, res) => validate.add(req, res));
-
+app.get('/validate', (req, res) => validate.get(res));
 
 
 const server = app.listen(port, () => console.log('Order api listening on port ' + port));
